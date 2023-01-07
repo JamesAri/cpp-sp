@@ -2,20 +2,25 @@
 #define CPP_SP_CANVAS_H
 
 #include "IDrawable.h"
-#include "constants.h"
+#include "common/constants.h"
 
-class Canvas: IDrawable {
+class Canvas : IDrawable {
 private:
     float mWidth;
     float mHeight;
 
-    Canvas(float width, float height);
-
-    std::vector<IDrawable> mDrawables;
+    std::vector<std::shared_ptr<IDrawable>> mDrawables;
 
 public:
-    [[nodiscard]] const std::vector<IDrawable> &getDrawables() {
+
+    Canvas(float width, float height);
+
+    [[nodiscard]] const std::vector<std::shared_ptr<IDrawable>> &getDrawables() {
         return mDrawables;
+    }
+
+    void add(std::shared_ptr<IDrawable> &drawable) {
+        mDrawables.push_back(drawable);
     }
 
     [[nodiscard]] float getWidth() const;
@@ -34,7 +39,7 @@ public:
 
     void rotate() override;
 
-    std::string asSvg() override;
+    std::stringstream asSvg() override;
 
     std::vector<Position> asPgm() override;
 

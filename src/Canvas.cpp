@@ -35,10 +35,16 @@ void Canvas::rotate() {
 
 }
 
-std::string Canvas::asSvg() {
-    return std::string();
+std::stringstream Canvas::asSvg() {
+    std::stringstream ss;
+    for (auto const &drawable : mDrawables) {
+        ss << drawable->asSvg().str();
+    }
+    return ss;
 }
 
 std::vector<Position> Canvas::asPgm() {
     return std::vector<Position>();
 }
+
+

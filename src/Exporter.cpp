@@ -2,7 +2,16 @@
 #include <fstream>
 #include <sstream>
 
-Exporter::Exporter(Canvas &canvas, std::string &fileName) : mCanvas(canvas), mFileName(fileName) {}
+std::string backgroundElement() {
+    std::stringstream ss;
+    ss << R"(<rect width="100%" height="100%")"
+       << " stroke=\"" << BACKGROUND_DEFAULT_COLOR << "\""
+       << " fill=\"" << BACKGROUND_DEFAULT_COLOR << "\"/>";
+    return ss.str();
+}
+
+
+Exporter::Exporter(Canvas &canvas, std::string &&fileName) : mCanvas(canvas), mFileName(fileName) {}
 
 void Exporter::exportToPgm() {
 
@@ -15,32 +24,11 @@ void Exporter::exportToSvg() {
         throw std::runtime_error(FILE_OPEN_ERROR);
     }
 
-    std::stringstream ss;
-    ss << "<svg version=\"" << SVG_VERSION <<"\"\n"
-       << "     width=\"" << mCanvas.getWidth() << "\"\n"
-       << "     height=\"" << mCanvas.getHeight() << "\"\n"
-       << "     xmlns=\"" << XMLNS << "\">\n"
-       << "         " << mCanvas.asSvg()
-       << "</svg>\n";
-
-    output << ss.rdbuf();
+    output << "<svg version=\"" << SVG_VERSION << "\"\n"
+           << "     width=\"" << mCanvas.getWidth() << "\"\n"
+           << "     height=\"" << mCanvas.getHeight() << "\"\n"
+           << "     xmlns=\"" << XMLNS << "\">\n"
+           << "     " << backgroundElement() << "\n"
+           << "     " << mCanvas.asSvg().str() << "\n"
+           << "</svg>\n";
 }
-
-/*
- *
-
-
-    <g transform="
-			  rotate(45 50 50)
-			  translate(70, 0)
-			  translate(0, 0)
-			  scale(.5)
-			  translate(70, 0)
-   ">
-        <rect width="50%" height="50%" fill="blue" />
-        <circle cx="150" cy="100" r="80" fill="green" />
-    </g>
-
-
-
- */

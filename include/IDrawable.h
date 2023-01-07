@@ -1,7 +1,7 @@
 #ifndef CPP_SP_IDRAWABLE_H
 #define CPP_SP_IDRAWABLE_H
 
-#include <string>
+#include <sstream>
 #include <vector>
 #include "Position.h"
 
@@ -11,7 +11,7 @@ public:
     virtual void scale() = 0;
     virtual void rotate() = 0;
 
-    virtual std::string asSvg() = 0;
+    virtual std::stringstream asSvg() = 0;
     virtual std::vector<Position> asPgm() = 0;
 
     virtual ~IDrawable() = default;

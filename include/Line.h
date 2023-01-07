@@ -5,10 +5,11 @@
 
 class Line : public IDrawable {
 private:
-    Position mPosition;
+    Position mPoint1;
+    Position mPoint2;
 
 public:
-    Line(float x, float y);
+    Line(float x1, float y1, float x2, float y2);
 
     void translate() override;
 
@@ -16,7 +17,7 @@ public:
 
     void rotate() override;
 
-    std::string asSvg() override;
+    std::stringstream asSvg() override;
 
     std::vector<Position> asPgm() override;
 };
