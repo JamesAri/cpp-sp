@@ -1,0 +1,12 @@
+# ninja log v5
+229	304	1673085191070469983	src/CMakeFiles/cpp_sp.dir/util/parser.cpp.o	4947f51f3881f0d7
+1	1038	1673087442534672284	src/CMakeFiles/cpp_sp.dir/components/Line.cpp.o	f629eeed1606c8d2
+0	244	1673085191009722925	src/CMakeFiles/cpp_sp.dir/main.cpp.o	f8f751d2e20db2bf
+60	147	1673033049178255019	cpp_sp	7673cbe6344c4cef
+4	229	1673085190986866882	src/CMakeFiles/cpp_sp.dir/components/ADrawablePrimitive.cpp.o	fda10fb8914db4fe
+1038	1122	1673087442620931589	/Users/jakub.slechta/git/cpp-sp/cpp_sp	f7589cbfdedd0b2c
+0	956	1673087442451491372	src/CMakeFiles/cpp_sp.dir/components/AbstractDrawablePrimitive.cpp.o	184675700350437d
+0	60	1673033049091787111	CMakeFiles/cpp_sp.dir/main.cpp.o	b9178bc2986eed09
+0	94	1673090241908590134	build.ninja	b7efc3086385342c
+1	94	1673087441592243313	src/CMakeFiles/cpp_sp.dir/util/Parser.cpp.o	44629d7b09baf081
+94	179	1673087441676553956	src/CMakeFiles/cpp_sp.dir/Exporter.cpp.o	6bcf4273c4cc00f0
