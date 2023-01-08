@@ -3,16 +3,16 @@
 
 #include <sstream>
 #include <vector>
-#include "Position.h"
+#include "common/Point.h"
 
 class IDrawable {
 public:
-    virtual void translate() = 0;
-    virtual void scale() = 0;
-    virtual void rotate() = 0;
+    virtual void translate(const Point &point) = 0;
+    virtual void scale(const Point &pivot, float mod) = 0;
+    virtual void rotate(const Point &pivot, float angle) = 0;
 
     virtual std::stringstream asSvg() = 0;
-    virtual std::vector<Position> asPgm() = 0;
+    virtual std::vector<Point> asPgm() = 0;
 
     virtual ~IDrawable() = default;
 };

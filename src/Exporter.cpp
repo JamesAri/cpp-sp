@@ -5,8 +5,8 @@
 std::string backgroundElement() {
     std::stringstream ss;
     ss << R"(<rect width="100%" height="100%")"
-       << " stroke=\"" << BACKGROUND_DEFAULT_COLOR << "\""
-       << " fill=\"" << BACKGROUND_DEFAULT_COLOR << "\"/>";
+       << " stroke=\"" << DEFAULT_BACKGROUND_COLOR << "\""
+       << " fill=\"" << DEFAULT_BACKGROUND_COLOR << "\"/>\n";
     return ss.str();
 }
 
@@ -27,8 +27,8 @@ void Exporter::exportToSvg() {
     output << "<svg version=\"" << SVG_VERSION << "\"\n"
            << "     width=\"" << mCanvas.getWidth() << "\"\n"
            << "     height=\"" << mCanvas.getHeight() << "\"\n"
+           << "     style=\"background-color:" << DEFAULT_BACKGROUND_COLOR << "\"\n"
            << "     xmlns=\"" << XMLNS << "\">\n"
-           << "     " << backgroundElement() << "\n"
-           << "     " << mCanvas.asSvg().str() << "\n"
+           << mCanvas.asSvg().str()
            << "</svg>\n";
 }

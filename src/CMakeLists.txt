@@ -6,4 +6,4 @@ add_executable(
         components/IDrawable.cpp
         components/Line.cpp
         util/ArgumentParser.cpp
-)
+        common/Point.cpp)

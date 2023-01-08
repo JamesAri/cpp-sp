@@ -4,7 +4,7 @@
 #include "IDrawable.h"
 #include "common/constants.h"
 
-class Canvas : IDrawable {
+class Canvas : public IDrawable {
 private:
     float mWidth;
     float mHeight;
@@ -27,21 +27,15 @@ public:
 
     [[nodiscard]] float getHeight() const;
 
-    void setWidth(float width);
+    void translate(const Point &point) override;
 
-    void setHeight(float height);
+    void scale(const Point &pivot, float mod) override;
 
-    void setSize(float width, float height);
-
-    void translate() override;
-
-    void scale() override;
-
-    void rotate() override;
+    void rotate(const Point &pivot, float angle) override;
 
     std::stringstream asSvg() override;
 
-    std::vector<Position> asPgm() override;
+    std::vector<Point> asPgm() override;
 
 };
 
