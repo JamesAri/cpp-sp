@@ -2,8 +2,8 @@
 #define CPP_SP_RECTANGLE_H
 
 
-#include "IDrawable.h"
-#include "Line.h"
+#include "components/IDrawable.h"
+#include "components/Line.h"
 
 class Rectangle: public IDrawable {
 private:

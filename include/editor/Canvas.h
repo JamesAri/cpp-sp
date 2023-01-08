@@ -1,7 +1,7 @@
 #ifndef CPP_SP_CANVAS_H
 #define CPP_SP_CANVAS_H
 
-#include "IDrawable.h"
+#include "components/IDrawable.h"
 #include "common/constants.h"
 
 class Canvas : public IDrawable {

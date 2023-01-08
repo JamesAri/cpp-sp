@@ -1,4 +1,5 @@
-#include "Canvas.h"
+#include "editor/Canvas.h"
+#include "util/vector-util.h"
 
 Canvas::Canvas(float width, float height) : mWidth(width), mHeight(height) {}
 
@@ -19,7 +20,12 @@ std::stringstream Canvas::asSvg() {
 }
 
 std::vector<Point> Canvas::asPgm() {
-    return std::vector<Point>();
+    std::vector<Point> dest = std::vector<Point>();
+    for (auto const &drawable : mDrawables) {
+        auto src = drawable->asPgm();
+        moveVector(src, dest);
+    }
+    return dest;
 }
 
 void Canvas::translate(const Point &point) {

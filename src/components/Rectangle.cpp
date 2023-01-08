@@ -1,4 +1,5 @@
-#include "Rectangle.h"
+#include "components/Rectangle.h"
+#include "util/vector-util.h"
 
 using namespace std::string_literals;
 
@@ -38,8 +39,13 @@ std::stringstream Rectangle::asSvg() {
     return ss;
 }
 
-std::vector <Point> Rectangle::asPgm() {
-    return std::vector<Point>();
+std::vector<Point> Rectangle::asPgm() {
+    auto points = std::vector<Point>();
+    moveVector(mLine1.asPgm(), points);
+    moveVector(mLine2.asPgm(), points);
+    moveVector(mLine3.asPgm(), points);
+    moveVector(mLine4.asPgm(), points);
+    return points;
 }
 
 

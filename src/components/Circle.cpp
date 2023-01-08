@@ -1,4 +1,4 @@
-#include "Circle.h"
+#include "components/Circle.h"
 #include "common/constants.h"
 
 Circle::Circle(float x, float y, float mRadius) : mPoint(x, y), mRadius(mRadius) {}
@@ -9,8 +9,8 @@ void Circle::translate(const Point &point) {
 }
 
 void Circle::scale(const Point &pivot, float mod) {
-    mPoint *= mod;
     mRadius *= mod;
+    mPoint *= mod;
 }
 
 void Circle::rotate(const Point &pivot, float angle) {
@@ -20,7 +20,7 @@ void Circle::rotate(const Point &pivot, float angle) {
 std::stringstream Circle::asSvg() {
     std::stringstream ss;
 
-    ss << "<circle" << DEFAULT_BRUSH_STYLE
+    ss << "<circle" << SVG_DEFAULT_BRUSH_STYLE
        << "cx=\"" << mPoint.getX() << "\" "
        << "cy=\"" << mPoint.getY() << "\" "
        << "r=\"" << mRadius << "\" "
@@ -31,6 +31,21 @@ std::stringstream Circle::asSvg() {
 }
 
 std::vector<Point> Circle::asPgm() {
-    return std::vector<Point>();
-}
+    auto points = std::vector<Point>();
 
+    auto xm = static_cast<int>(mPoint.getX());
+    auto ym = static_cast<int>(mPoint.getY());
+    auto r = static_cast<int>(mRadius);
+
+    int x = -r, y = 0, err = 2 - 2 * r;
+    do {
+        points.emplace_back(xm - x, ym + y);
+        points.emplace_back(xm - y, ym - x);
+        points.emplace_back(xm + x, ym - y);
+        points.emplace_back(xm + y, ym + x);
+        r = err;
+        if (r <= y) err += ++y * 2 + 1;
+        if (r > x || err > y) err += ++x * 2 + 1;
+    } while (x < 0);
+    return points;
+}

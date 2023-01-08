@@ -1,5 +1,5 @@
 #include <sstream>
-#include "Line.h"
+#include "components/Line.h"
 #include "common/constants.h"
 
 using namespace std::string_literals;
@@ -23,7 +23,7 @@ void Line::rotate(const Point &pivot, float angle) {
 
 std::stringstream Line::asSvg() {
     std::stringstream ss;
-    ss << "<line" << DEFAULT_BRUSH_STYLE
+    ss << "<line" << SVG_DEFAULT_BRUSH_STYLE
        << "x1=\"" << mPoint1.getX() << "\" "
        << "y1=\"" << mPoint1.getY() << "\" "
        << "x2=\"" << mPoint2.getX() << "\" "
@@ -33,5 +33,24 @@ std::stringstream Line::asSvg() {
 }
 
 std::vector<Point> Line::asPgm() {
-    return {};
+    auto points = std::vector<Point>();
+
+    auto x1 = static_cast<int>(mPoint1.getX());
+    auto y1 = static_cast<int>(mPoint1.getY());
+    auto x2 = static_cast<int>(mPoint2.getX());
+    auto y2 = static_cast<int>(mPoint2.getY());
+
+    int dx =  abs(x2-x1), sx = x1<x2 ? 1 : -1;
+    int dy = -abs(y2-y1), sy = y1<y2 ? 1 : -1;
+    int err = dx+dy, e2;
+
+    for(;;){
+        points.emplace_back(x1, y1);
+        if (x1==x2 && y1==y2) break;
+        e2 = 2*err;
+        if (e2 >= dy) { err += dy; x1 += sx; } /* e_xy+e_x > 0 */
+        if (e2 <= dx) { err += dx; y1 += sy; } /* e_xy+e_y < 0 */
+    }
+
+    return points;
 }
