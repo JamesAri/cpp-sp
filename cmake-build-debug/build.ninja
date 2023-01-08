@@ -123,6 +123,20 @@ build src/CMakeFiles/cpp_sp.dir/common/Point.cpp.o: CXX_COMPILER__cpp_sp_Debug /
   OBJECT_DIR = src/CMakeFiles/cpp_sp.dir
   OBJECT_FILE_DIR = src/CMakeFiles/cpp_sp.dir/common
 
+build src/CMakeFiles/cpp_sp.dir/components/Rectangle.cpp.o: CXX_COMPILER__cpp_sp_Debug /Users/jakub.slechta/git/cpp-sp/src/components/Rectangle.cpp || cmake_object_order_depends_target_cpp_sp
+  DEP_FILE = src/CMakeFiles/cpp_sp.dir/components/Rectangle.cpp.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -fcolor-diagnostics -std=gnu++20
+  INCLUDES = -I/Users/jakub.slechta/git/cpp-sp/include
+  OBJECT_DIR = src/CMakeFiles/cpp_sp.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/cpp_sp.dir/components
+
+build src/CMakeFiles/cpp_sp.dir/components/Circle.cpp.o: CXX_COMPILER__cpp_sp_Debug /Users/jakub.slechta/git/cpp-sp/src/components/Circle.cpp || cmake_object_order_depends_target_cpp_sp
+  DEP_FILE = src/CMakeFiles/cpp_sp.dir/components/Circle.cpp.o.d
+  FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -fcolor-diagnostics -std=gnu++20
+  INCLUDES = -I/Users/jakub.slechta/git/cpp-sp/include
+  OBJECT_DIR = src/CMakeFiles/cpp_sp.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/cpp_sp.dir/components
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cpp_sp
@@ -131,7 +145,7 @@ build src/CMakeFiles/cpp_sp.dir/common/Point.cpp.o: CXX_COMPILER__cpp_sp_Debug /
 #############################################
 # Link the executable /Users/jakub.slechta/git/cpp-sp/cpp_sp
 
-build /Users/jakub.slechta/git/cpp-sp/cpp_sp: CXX_EXECUTABLE_LINKER__cpp_sp_Debug src/CMakeFiles/cpp_sp.dir/main.cpp.o src/CMakeFiles/cpp_sp.dir/Exporter.cpp.o src/CMakeFiles/cpp_sp.dir/Canvas.cpp.o src/CMakeFiles/cpp_sp.dir/components/IDrawable.cpp.o src/CMakeFiles/cpp_sp.dir/components/Line.cpp.o src/CMakeFiles/cpp_sp.dir/util/ArgumentParser.cpp.o src/CMakeFiles/cpp_sp.dir/common/Point.cpp.o
+build /Users/jakub.slechta/git/cpp-sp/cpp_sp: CXX_EXECUTABLE_LINKER__cpp_sp_Debug src/CMakeFiles/cpp_sp.dir/main.cpp.o src/CMakeFiles/cpp_sp.dir/Exporter.cpp.o src/CMakeFiles/cpp_sp.dir/Canvas.cpp.o src/CMakeFiles/cpp_sp.dir/components/IDrawable.cpp.o src/CMakeFiles/cpp_sp.dir/components/Line.cpp.o src/CMakeFiles/cpp_sp.dir/util/ArgumentParser.cpp.o src/CMakeFiles/cpp_sp.dir/common/Point.cpp.o src/CMakeFiles/cpp_sp.dir/components/Rectangle.cpp.o src/CMakeFiles/cpp_sp.dir/components/Circle.cpp.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk
   OBJECT_DIR = src/CMakeFiles/cpp_sp.dir
   POST_BUILD = :

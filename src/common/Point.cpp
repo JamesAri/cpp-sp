@@ -50,8 +50,13 @@ void Point::rotate(const Point &pivot, float angle) {
     auto c = static_cast<float>(cos(t));
 
     *this -= pivot;
-    mX = mX * c - mY * s;
-    mY = mX * s + mY * c;
+
+    auto x = mX;
+    auto y = mY;
+
+    mX = x * c - y * s;
+    mY = x * s + y * c;
+
     *this += pivot;
 }
 
