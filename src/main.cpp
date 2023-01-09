@@ -6,7 +6,6 @@
 #include <iostream>
 
 
-
 int main(int argc, char *argv[]) {
     if (argc != EXPECTED_ARGC) {
         std::cerr << INVALID_ARGUMENTS_ERROR << std::endl;
