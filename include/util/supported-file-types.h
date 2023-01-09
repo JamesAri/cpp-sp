@@ -1,9 +1,10 @@
 #ifndef CPP_SP_SUPPORTED_FILE_TYPES_H
 #define CPP_SP_SUPPORTED_FILE_TYPES_H
 
-// Supported file types
-enum SUPPORTED_FILE_TYPES {
+enum ESupportedFileTypes {
     SVG, PGM
 };
+
+bool isValidType(ESupportedFileTypes type);
 
 #endif //CPP_SP_SUPPORTED_FILE_TYPES_H

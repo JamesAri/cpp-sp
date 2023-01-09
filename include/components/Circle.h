@@ -9,7 +9,7 @@ private:
     Point mPoint;
     float mRadius;
 public:
-    Circle(float x, float y, float mRadius);
+    Circle(float x, float y, float radius);
 
     void translate(const Point &point) override;
 

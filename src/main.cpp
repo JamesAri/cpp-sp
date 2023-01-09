@@ -1,42 +1,39 @@
 #include "editor/Exporter.h"
-#include "components/Line.h"
-#include "components/Rectangle.h"
-#include "components/Circle.h"
-#include "util/string-util.h"
 #include "util/argument-parser.h"
+#include "util/commands-parser.h"
 #include "common/constants.h"
 
-using namespace std::string_literals;
+#include <iostream>
 
-// Apple Clang nema support pro:
-//      std::execution, std::ranges, std::format, ...
-// jinak bych je v praci velmi rad pouzil
-// https://en.cppreference.com/w/cpp/compiler_support/20
 
-//        std::shared_ptr<IDrawable> line = std::make_shared<Line>(50.f, 50.f, 100.f, 50.f);
-//        canvas.add(line);
+
 int main(int argc, char *argv[]) {
     if (argc != EXPECTED_ARGC) {
-        perror("Invalid arguments.\nUsage: drawing.exe <input_file> <output_file> <size>");
+        std::cerr << INVALID_ARGUMENTS_ERROR << std::endl;
         exit(EXIT_FAILURE);
     }
 
     try {
         auto [inputFile, outputFile, width, height, type] = parseArguments(argv);
-        auto canvas = Canvas(width, height);
+
+        if (!isValidType(type))
+            throw std::runtime_error(INVALID_FILE_TYPE_ERROR);
+
+        auto canvas = std::make_shared<Canvas>(width, height);
+        parseCommands(inputFile, canvas);
         auto exporter = Exporter(canvas, outputFile);
 
         switch (type) {
-            case SUPPORTED_FILE_TYPES::SVG:
+            case ESupportedFileTypes::SVG:
                 exporter.exportToSvg();
                 break;
-            case SUPPORTED_FILE_TYPES::PGM:
+            case ESupportedFileTypes::PGM:
                 exporter.exportToPgm();
                 break;
         }
 
     } catch (std::runtime_error &re) {
-        perror(re.what());
+        std::cerr << re.what() << std::endl;
         exit(EXIT_FAILURE);
     }
 }

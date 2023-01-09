@@ -9,7 +9,7 @@
  * https://netpbm.sourceforge.net/doc/pgm.html
  *
  * @param pixels sorted unique integers representing pixels in bitmap.
- * @return raster string stream.
+ * @return raster string stream.d
  */
 std::stringstream createRaster(std::vector<int> pixels, int canvasSize) {
     std::stringstream ss;
@@ -48,7 +48,8 @@ std::vector<int> createUniqueSortedPixels(const std::vector<Point> &points, floa
     return pixels;
 }
 
-Exporter::Exporter(Canvas &canvas, std::string &fileName) : mCanvas(canvas), mFileName(fileName) {}
+Exporter::Exporter(std::shared_ptr<Canvas> &canvas, std::filesystem::path &fileName) : mCanvas(canvas),
+                                                                                       mFileName(fileName) {}
 
 void Exporter::exportToPgm() {
     std::ofstream output(mFileName, std::ios_base::trunc);
@@ -58,22 +59,21 @@ void Exporter::exportToPgm() {
     }
 
     output << PGM_VERSION << "\n"
-           << mCanvas.getWidth() << " " << mCanvas.getHeight() << "\n"
+           << mCanvas->getWidth() << " " << mCanvas->getHeight() << "\n"
            << PGM_WHITE_VALUE;
 
-    auto points = mCanvas.asPgm();
+    auto points = mCanvas->asPgm();
 
     if (points.empty()) {
         output << std::endl;
         return;
     }
 
-    auto pixels = createUniqueSortedPixels(points, mCanvas.getWidth());
-    auto canvasSize = static_cast<int>(mCanvas.getWidth() * mCanvas.getHeight());
+    auto pixels = createUniqueSortedPixels(points, mCanvas->getWidth());
+    auto canvasSize = static_cast<int>(mCanvas->getWidth() * mCanvas->getHeight());
     auto raster = createRaster(pixels, canvasSize);
     output << raster.rdbuf();
 }
-
 
 
 void Exporter::exportToSvg() {
@@ -84,10 +84,10 @@ void Exporter::exportToSvg() {
     }
 
     output << "<svg version=\"" << SVG_VERSION << "\"\n"
-           << "     width=\"" << mCanvas.getWidth() << "\"\n"
-           << "     height=\"" << mCanvas.getHeight() << "\"\n"
+           << "     width=\"" << mCanvas->getWidth() << "\"\n"
+           << "     height=\"" << mCanvas->getHeight() << "\"\n"
            << "     style=\"background-color:" << SVG_DEFAULT_BACKGROUND_COLOR << "\"\n"
            << "     xmlns=\"" << XMLNS << "\">\n"
-           << mCanvas.asSvg().str()
+           << mCanvas->asSvg().str()
            << "</svg>\n";
 }

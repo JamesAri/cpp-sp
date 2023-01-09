@@ -1,5 +1,6 @@
 #include "components/Rectangle.h"
 #include "util/vector-util.h"
+#include "common/constants.h"
 
 using namespace std::string_literals;
 
@@ -7,7 +8,11 @@ Rectangle::Rectangle(float x1, float y1, float width, float height) :
         mLine1(x1, y1, x1 + width, y1),
         mLine2(x1, y1, x1, y1 + height),
         mLine3(x1 + width, y1, x1 + width, y1 + height),
-        mLine4(x1, y1 + height, x1 + width, y1 + height) {}
+        mLine4(x1, y1 + height, x1 + width, y1 + height) {
+    if (width < 0 || height < 0) {
+        throw std::runtime_error(INVALID_RECT_SIZE_ERROR);
+    }
+}
 
 void Rectangle::translate(const Point &point) {
     mLine1.translate(point);

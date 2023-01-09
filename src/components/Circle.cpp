@@ -1,7 +1,11 @@
 #include "components/Circle.h"
 #include "common/constants.h"
 
-Circle::Circle(float x, float y, float mRadius) : mPoint(x, y), mRadius(mRadius) {}
+Circle::Circle(float x, float y, float radius) : mPoint(x, y), mRadius(radius) {
+    if (radius <= 0) {
+        throw std::runtime_error(INVALID_CIRCLE_RADIUS_ERROR);
+    }
+}
 
 
 void Circle::translate(const Point &point) {

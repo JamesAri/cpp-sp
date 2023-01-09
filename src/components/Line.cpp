@@ -2,9 +2,11 @@
 #include "components/Line.h"
 #include "common/constants.h"
 
-using namespace std::string_literals;
-
-Line::Line(float x1, float y1, float x2, float y2) : mPoint1(x1, y1), mPoint2(x2, y2) {}
+Line::Line(float x1, float y1, float x2, float y2) : mPoint1(x1, y1), mPoint2(x2, y2) {
+    if (!(x1 != x2 || y1 != y2)) {
+        throw std::runtime_error(INVALID_LINE_POINTS_ERROR);
+    }
+}
 
 void Line::translate(const Point &point) {
     mPoint1.translate(point);
@@ -40,16 +42,22 @@ std::vector<Point> Line::asPgm() {
     auto x2 = static_cast<int>(mPoint2.getX());
     auto y2 = static_cast<int>(mPoint2.getY());
 
-    int dx =  abs(x2-x1), sx = x1<x2 ? 1 : -1;
-    int dy = -abs(y2-y1), sy = y1<y2 ? 1 : -1;
-    int err = dx+dy, e2;
+    int dx = abs(x2 - x1), sx = x1 < x2 ? 1 : -1;
+    int dy = -abs(y2 - y1), sy = y1 < y2 ? 1 : -1;
+    int err = dx + dy, e2;
 
-    for(;;){
+    for (;;) {
         points.emplace_back(x1, y1);
-        if (x1==x2 && y1==y2) break;
-        e2 = 2*err;
-        if (e2 >= dy) { err += dy; x1 += sx; } /* e_xy+e_x > 0 */
-        if (e2 <= dx) { err += dx; y1 += sy; } /* e_xy+e_y < 0 */
+        if (x1 == x2 && y1 == y2) break;
+        e2 = 2 * err;
+        if (e2 >= dy) {
+            err += dy;
+            x1 += sx;
+        }
+        if (e2 <= dx) {
+            err += dx;
+            y1 += sy;
+        }
     }
 
     return points;

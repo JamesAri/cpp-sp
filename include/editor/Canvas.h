@@ -4,24 +4,21 @@
 #include "components/IDrawable.h"
 #include "common/constants.h"
 
+#include <vector>
+#include <memory>
+
 class Canvas : public IDrawable {
 private:
     float mWidth;
     float mHeight;
 
-    std::vector<std::shared_ptr<IDrawable>> mDrawables;
+    std::vector<std::unique_ptr<IDrawable>> mDrawables;
 
 public:
 
     Canvas(float width, float height);
 
-    [[nodiscard]] const std::vector<std::shared_ptr<IDrawable>> &getDrawables() {
-        return mDrawables;
-    }
-
-    void add(std::shared_ptr<IDrawable> &drawable) {
-        mDrawables.push_back(drawable);
-    }
+    void add(std::unique_ptr<IDrawable> drawable);
 
     [[nodiscard]] float getWidth() const;
 

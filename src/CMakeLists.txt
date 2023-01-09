@@ -4,10 +4,11 @@ add_executable(
         editor/Exporter.cpp
         editor/Canvas.cpp
         common/Point.cpp
-        components/IDrawable.cpp
         components/Line.cpp
         components/Rectangle.cpp
         components/Circle.cpp
         util/argument-parser.cpp
         util/string-util.cpp
+        util/commands-parser.cpp
+        util/supported-file-types.cpp
 )

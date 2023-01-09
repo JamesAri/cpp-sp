@@ -2,13 +2,14 @@
 #define CPP_SP_EXPORTER_H
 
 #include "Canvas.h"
+#include <filesystem>
 
 class Exporter {
 private:
-    Canvas mCanvas;
-    std::string mFileName;
+    std::shared_ptr<Canvas> mCanvas;
+    std::filesystem::path mFileName;
 public:
-    explicit Exporter(Canvas &canvas, std::string &fileName);
+    Exporter(std::shared_ptr<Canvas> &canvas, std::filesystem::path &fileName);
 
     void exportToSvg();
     void exportToPgm();
