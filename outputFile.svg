@@ -1,0 +1,21 @@
+<svg version="1.1"
+     width="160"
+     height="160"
+     style="background-color:white"
+     xmlns="http://www.w3.org/2000/svg">
+<circle style="stroke:rgb(0,0,0);stroke-width:2" cx="133.839" cy="38.6612" r="5" fill="transparent"/>
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="133.839" y1="38.6612" x2="116.161" y2="56.3388" />
+<circle style="stroke:rgb(0,0,0);stroke-width:2" cx="116.161" cy="56.3388" r="7.5" fill="transparent"/>
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="155" y1="5" x2="155" y2="25" />
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="155" y1="5" x2="140" y2="5" />
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="155" y1="25" x2="140" y2="25" />
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="140" y1="5" x2="140" y2="25" />
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="155" y1="5" x2="140" y2="25" />
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="140" y1="5" x2="155" y2="25" />
+<circle style="stroke:rgb(0,0,0);stroke-width:2" cx="40" cy="120" r="30" fill="transparent"/>
+<circle style="stroke:rgb(0,0,0);stroke-width:2" cx="120" cy="120" r="30" fill="transparent"/>
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="10" y1="10" x2="70" y2="10" />
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="10" y1="10" x2="10" y2="70" />
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="70" y1="10" x2="70" y2="70" />
+<line style="stroke:rgb(0,0,0);stroke-width:2" x1="10" y1="70" x2="70" y2="70" />
+</svg>
